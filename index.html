@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+
+<html lang = "hu">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <title> </title>
+</head>
+
+<body>
+
+    <br>
+
+    <div> 
+
+        <!-- 1. -->
+        <button onclick = "Elso()"> Első elem </button>
+        <button onclick = "Masodik()"> Második elem </button>
+        <button onclick = "Harmadik()"> Harmadik elem </button>
+
+        <!-- 2. -->
+        <button onclick = "Osszes()"> Összes </button>
+
+        <!-- 4. -->
+        <button onclick = "Hossz()"> Hossz </button>
+
+        <p id = "kiiras"> ... </p>
+
+    </div>
+
+    <br>
+
+    <div>
+
+        <!-- 3. -->
+        <input type = "text" id = "in">
+        <button onclick = "Bevitel()"> Bevitel </button>
+
+    </div>
+    
+    <br>
+
+    <div>
+
+        <!-- 5. -->
+        <input type = "number" id = "torol">
+        <button onclick = "Torles()"> Törlés </button>
+        
+    </div>
+    
+
+    <script>
+
+        // 1.
+        let tomb = [1, 2, 3];
+
+        function Elso()
+        {
+            document.getElementById("kiiras").innerHTML = "A tömb első eleme: " + tomb[0];
+        }
+
+        function Masodik()
+        {
+            document.getElementById("kiiras").innerHTML = "A tömb második eleme: " + tomb[1];
+        }
+
+        function Harmadik()
+        {
+            document.getElementById("kiiras").innerHTML = "A tömb harmadik eleme: " + tomb[2];
+        }
+
+        // 2.
+        function Osszes()
+        {
+            document.getElementById("kiiras").innerHTML = "A tömb összes eleme: ";
+
+            for(let i = 0; i < tomb.length; i++)
+            {
+                if(i == (tomb.length - 1))
+                {
+                    document.getElementById("kiiras").innerHTML += tomb[i];
+                }
+                else 
+                {
+                    document.getElementById("kiiras").innerHTML += tomb[i] + ", ";
+                }
+            }
+        } 
+
+        // 3.
+        function Bevitel()
+        {
+            let plusz = document.getElementById("in").value;
+            tomb.push(plusz);
+        }
+        
+        // 4.
+        function Hossz()
+        {
+            document.getElementById("kiiras").innerHTML = "A tömb " + tomb.length + " elemet tartalmaz";
+        }
+
+        // 5.
+        function Torles()
+        {
+            let torolindex = document.getElementById("torol").value;
+            tomb.splice(torolindex, 1);
+        }
+
+    </script>
+
+</body>
+
+</html>
