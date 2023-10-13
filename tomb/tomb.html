@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+
+    <title>Document</title>
+
+    <style>
+
+    body {
+        background-color: #a8c8f1;
+    }
+
+    .container {
+        text-align: center;
+        margin: 20px;
+    }
+
+    input[type = "text"] {
+        width: 300px;
+        padding: 5px;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    button {
+        padding: 5px 10px;
+        font-size: 16px;
+    }
+
+    .card {
+        border: 3px solid #1d4c8a;
+        background-color: #a8e4ff;
+        padding: 20px;
+        margin: 10px;
+        display: inline-block;
+        width: 150px;
+        font-size: large;
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+        <div class = "container">
+            <input type = "text" id = "inputField">
+            <button id = "submitButton"> Submit </button>
+            <div id = "cardContainer"> </div>
+        </div>
+
+        <script>
+
+            const data = [];
+
+            const inputField = document.getElementById("inputField");
+            const submitButton = document.getElementById("submitButton");
+            const cardContainer = document.getElementById("cardContainer");
+
+            submitButton.addEventListener("click", () => {
+
+                const inputValue = inputField.value.trim();
+
+                if (inputValue !== "") {
+                    data.push(inputValue);
+                    inputField.value = "";
+                    renderData();
+                }
+
+            });
+
+            function renderData() {
+
+                cardContainer.innerHTML = "";
+                data.forEach((item, index) => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+                    card.innerHTML = `
+                        <p>${item}</p>
+                        <button onclick = "deleteCard(${index})"> Delete </button>
+                    `;
+                    cardContainer.appendChild(card);
+                });
+            }
+
+            function deleteCard(index) {
+
+                data.splice(index, 1);
+                renderData();
+                
+            }
+
+            renderData();
+
+        </script>
+
+    </body>
+
+</html>
